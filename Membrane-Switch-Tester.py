@@ -270,61 +270,77 @@ def readLine(line, characters):
         GPIO.output(25, GPIO.HIGH)
         time.sleep(0.1)
         if characters[0] == "1":
-            print("q")
+            print("1")
+            one()
             GPIO.output(25, GPIO.LOW)
         elif characters[0] == "4":
             print("4")
+            four()
             GPIO.output(25, GPIO.LOW)
         elif characters[0] == "7":
             print("7")
+            seven()
             GPIO.output(25, GPIO.LOW)
         else:
             print("*")
+            ast()
             GPIO.output(25, GPIO.LOW)
     if(GPIO.input(C2) == 1):
         GPIO.output(25, GPIO.HIGH)
         time.sleep(0.1)
         if characters[1] == "2":
             print("2")
+            two()
             GPIO.output(25, GPIO.LOW)
         elif characters[1] == "5":
             print("5")
+            five()
             GPIO.output(25, GPIO.LOW)
         elif characters[1] == "8":
             print("8")
+            eight()
             GPIO.output(25, GPIO.LOW)
         else:
             print("0")
+            zero()
             GPIO.output(25, GPIO.LOW)
     if(GPIO.input(C3) == 1):
         GPIO.output(25, GPIO.HIGH)
         time.sleep(0.1)
         if characters[2] == "3":
             print("3")
+            three()
             GPIO.output(25, GPIO.LOW)
         elif characters[2] == "6":
             print("6")
+            six()
             GPIO.output(25, GPIO.LOW)
         elif characters[2] == "9":
             print("9")
+            nine()
             GPIO.output(25, GPIO.LOW)
         else:
             print("#")
+            hasht()
             GPIO.output(25, GPIO.LOW)
     if(GPIO.input(C4) == 1):
         GPIO.output(25, GPIO.HIGH)
         time.sleep(0.1)
         if characters[3] == "A":
             print("A")
+            a()
             GPIO.output(25, GPIO.LOW)
         elif characters[3] == "B":
             print("B")
+            b()
             GPIO.output(25, GPIO.LOW)
         elif characters[3] == "C":
             print("C")
+            c()
             GPIO.output(25, GPIO.LOW)
         else:
             print("D")
+            d()
             GPIO.output(25, GPIO.LOW)
     GPIO.output(line, GPIO.LOW)
 
