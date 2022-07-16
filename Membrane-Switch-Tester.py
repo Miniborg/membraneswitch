@@ -19,6 +19,7 @@ bottomleft = 5
 period = 26
 bottomright = 19
 bottom = 13
+Test = False
 
 #Keypad
 C1 = 27
@@ -73,175 +74,36 @@ def off():
     GPIO.output(5, GPIO.LOW)
     GPIO.output(12, GPIO.LOW)
     GPIO.output(26, GPIO.LOW)
+
+d = {
+    '0': [22,21,16,20,19,19,5],
+    '1': [bottomright, topright],
+    '2': [top, topright, bottomleft, middle, bottom],
+    '3': [top, topleft, middle, bottomleft, bottom],
+    '4': [topleft, topright, middle, bottomright],
+    '5': [top, topleft, bottomright, middle, bottom],
+    '6': [top, topleft, middle, bottomleft, bottomright, bottom],
+    '7': [top, topright, bottomright],
+    '8': [top, topright, bottomright, middle, bottom, bottomleft, topleft],
+    '9': [top, topright, topleft, middle, bottomright, bottom],
+    'ast': [period],
+    'hasht': [topleft, topright, middle, bottomleft, bottomright],
+    'A': [period, top, topleft, topright, middle, bottomleft, bottomright],
+    'B': [top, topright, bottomright, middle, bottom, bottomleft, topleft, period],
+    'C': [top, topleft, bottomleft, bottom, period],
+    'D' : [top, topleft, bottomleft, bottom, bottomright, topright, period],
     
-def zero():
-    off()
-    GPIO.output(22, GPIO.HIGH)
-    GPIO.output(21, GPIO.HIGH)
-    GPIO.output(16, GPIO.HIGH)
-    GPIO.output(20, GPIO.HIGH)
-    GPIO.output(19, GPIO.HIGH)
-    GPIO.output(13, GPIO.HIGH)
-    GPIO.output(5, GPIO.HIGH) 
+}
 
-def one():
+def set_screen(n):
     off()
-    GPIO.output(bottomright, GPIO.HIGH)
-    GPIO.output(topright, GPIO.HIGH)
-
-def two():
-    off()
-    GPIO.output(top, GPIO.HIGH)
-    GPIO.output(topright, GPIO.HIGH)
-    GPIO.output(middle, GPIO.HIGH)
-    GPIO.output(bottomleft, GPIO.HIGH)
-    GPIO.output(bottom, GPIO.HIGH)
-
-def three():
-    off()
-    GPIO.output(top, GPIO.HIGH)
-    GPIO.output(middle, GPIO.HIGH)
-    GPIO.output(bottom, GPIO.HIGH)
-    GPIO.output(topright, GPIO.HIGH)
-    GPIO.output(bottomright, GPIO.HIGH)
-
-def four():
-    off()
-    GPIO.output(middle, GPIO.HIGH)
-    GPIO.output(topleft, GPIO.HIGH)
-    GPIO.output(topright, GPIO.HIGH)
-    GPIO.output(bottomright, GPIO.HIGH)
-
-def five():
-    off()
-    GPIO.output(middle, GPIO.HIGH)
-    GPIO.output(top, GPIO.HIGH)
-    GPIO.output(bottom, GPIO.HIGH)
-    GPIO.output(topleft, GPIO.HIGH)
-    GPIO.output(bottomright, GPIO.HIGH)
-
-def six():
-    GPIO.output(middle, GPIO.HIGH)
-    GPIO.output(top, GPIO.HIGH)
-    GPIO.output(topleft, GPIO.HIGH)
-    GPIO.output(bottomleft, GPIO.HIGH)
-    GPIO.output(bottom, GPIO.HIGH)
-    GPIO.output(bottomright, GPIO.HIGH)
-
-def seven():
-    off()
-    GPIO.output(top, GPIO.HIGH)
-    GPIO.output(topright, GPIO.HIGH)
-    GPIO.output(bottomright, GPIO.HIGH)
-
-def eight():
-    off()
-    GPIO.output(22, GPIO.HIGH)
-    GPIO.output(21, GPIO.HIGH)
-    GPIO.output(16, GPIO.HIGH)
-    GPIO.output(20, GPIO.HIGH)
-    GPIO.output(19, GPIO.HIGH)
-    GPIO.output(13, GPIO.HIGH)
-    GPIO.output(5, GPIO.HIGH)
-    GPIO.output(middle, GPIO.HIGH)
-
-def nine():
-    off()
-    GPIO.output(top, GPIO.HIGH)
-    GPIO.output(middle, GPIO.HIGH)
-    GPIO.output(bottom, GPIO.HIGH)
-    GPIO.output(topright, GPIO.HIGH)
-    GPIO.output(bottomright, GPIO.HIGH)
-    GPIO.output(topleft, GPIO.HIGH)
-
-def ast():
-    off()
-    GPIO.output(period, GPIO.HIGH)
-
-def hasht():
-    off()
-    GPIO.output(topright, GPIO.HIGH)
-    GPIO.output(bottomright, GPIO.HIGH)
-    GPIO.output(middle, GPIO.HIGH)
-    GPIO.output(topleft, GPIO.HIGH)
-    GPIO.output(bottomleft, GPIO.HIGH)
-
-def a():
-    off()
-    GPIO.output(bottomleft, GPIO.HIGH)
-    GPIO.output(bottomright, GPIO.HIGH)
-    GPIO.output(topleft, GPIO.HIGH)
-    GPIO.output(topright, GPIO.HIGH)
-    GPIO.output(middle, GPIO.HIGH)
-    GPIO.output(top, GPIO.HIGH)
-    GPIO.output(period, GPIO.HIGH)
-
-def c():
-    off()
-    GPIO.output(bottomleft, GPIO.HIGH)
-    GPIO.output(topleft, GPIO.HIGH)
-    GPIO.output(bottom, GPIO.HIGH)
-    GPIO.output(top, GPIO.HIGH)
-    GPIO.output(period, GPIO.HIGH)
-
-def b():
-    off()
-    GPIO.output(22, GPIO.HIGH)
-    GPIO.output(16, GPIO.HIGH)
-    GPIO.output(19, GPIO.HIGH)
-    GPIO.output(13, GPIO.HIGH)
-    GPIO.output(5, GPIO.HIGH)
-    GPIO.output(middle, GPIO.HIGH)
-    GPIO.output(period, GPIO.HIGH)
-
-def d():
-    off()
-    GPIO.output(22, GPIO.HIGH)
-    GPIO.output(21, GPIO.HIGH)
-    GPIO.output(16, GPIO.HIGH)
-    GPIO.output(20, GPIO.HIGH)
-    GPIO.output(19, GPIO.HIGH)
-    GPIO.output(13, GPIO.HIGH)
-    GPIO.output(5, GPIO.HIGH)
-    GPIO.output(period, GPIO.HIGH)
+    for i in d[n]:
+        GPIO.output(i, GPIO.HIGH)
 
 #7 segment display changer
-def setscr(target):
-    if target == "0":
-        zero()
-    if target == "1":
-        one()
-    if target == "2":
-        two()
-    if target == "3":
-        three()
-    if target == "4":
-        four()
-    if target == "5":
-        five()
-    if target == "6":
-        six()
-    if target == "7":
-        seven()
-    if target == "8":
-        eight()
-    if target == "9":
-        nine()
-    if target == "hasht":
-        hasht()
-    if target == "ast":
-        ast()
-    if target == "A":
-        a()
-    if target == "B":
-        b()
-    if target == "C":
-        c()
-    if target == "D":
-        d()
 
 #Checks if you did the right input and handles it
-def checknum(inputt, target, scoe):
+def checknum(inputt, target):
     if inputt == target:
         target = selectionlist[random.randrange(-1,16)]
         tim = time.time() - startTime - 2.5
@@ -266,89 +128,32 @@ def destroy():
 #Checks the keypad for input
 def readLine(line, characters):
     GPIO.output(line, GPIO.HIGH)
+    idx = 0
     if(GPIO.input(C1) == 1):
-        GPIO.output(25, GPIO.HIGH)
-        time.sleep(0.1)
-        if characters[0] == "1":
-            print("1")
-            one()
-            GPIO.output(25, GPIO.LOW)
-        elif characters[0] == "4":
-            print("4")
-            four()
-            GPIO.output(25, GPIO.LOW)
-        elif characters[0] == "7":
-            print("7")
-            seven()
-            GPIO.output(25, GPIO.LOW)
-        else:
-            print("*")
-            ast()
-            GPIO.output(25, GPIO.LOW)
-    if(GPIO.input(C2) == 1):
-        GPIO.output(25, GPIO.HIGH)
-        time.sleep(0.1)
-        if characters[1] == "2":
-            print("2")
-            two()
-            GPIO.output(25, GPIO.LOW)
-        elif characters[1] == "5":
-            print("5")
-            five()
-            GPIO.output(25, GPIO.LOW)
-        elif characters[1] == "8":
-            print("8")
-            eight()
-            GPIO.output(25, GPIO.LOW)
-        else:
-            print("0")
-            zero()
-            GPIO.output(25, GPIO.LOW)
-    if(GPIO.input(C3) == 1):
-        GPIO.output(25, GPIO.HIGH)
-        time.sleep(0.1)
-        if characters[2] == "3":
-            print("3")
-            three()
-            GPIO.output(25, GPIO.LOW)
-        elif characters[2] == "6":
-            print("6")
-            six()
-            GPIO.output(25, GPIO.LOW)
-        elif characters[2] == "9":
-            print("9")
-            nine()
-            GPIO.output(25, GPIO.LOW)
-        else:
-            print("#")
-            hasht()
-            GPIO.output(25, GPIO.LOW)
-    if(GPIO.input(C4) == 1):
-        GPIO.output(25, GPIO.HIGH)
-        time.sleep(0.1)
-        if characters[3] == "A":
-            print("A")
-            a()
-            GPIO.output(25, GPIO.LOW)
-        elif characters[3] == "B":
-            print("B")
-            b()
-            GPIO.output(25, GPIO.LOW)
-        elif characters[3] == "C":
-            print("C")
-            c()
-            GPIO.output(25, GPIO.LOW)
-        else:
-            print("D")
-            d()
-            GPIO.output(25, GPIO.LOW)
+        idx = 0
+    elif(GPIO.input(C2) == 1):
+        idx = 1
+    elif(GPIO.input(C3) == 1):
+        idx = 2
+    elif(GPIO.input(C4) == 1):
+        idx = 3
+    GPIO.output(25, GPIO.HIGH)
+    time.sleep(0.1)
+    if Test:
+        print(characters[idx])
+    else:
+        checknum(characters[idx], numberrr)
+    set_screen(characters[idx])
+    GPIO.output(25, GPIO.LOW)
     GPIO.output(line, GPIO.LOW)
 
 #Main loop
 try:
+    if input("test?") == "Y":
+        Test = True
     setup(funnyword, score)
     numberrr = str(selectionlist[random.randrange(-1,16)])
-    setscr(numberrr)
+    set_screen(numberrr)
     print(numberrr)
     while True:
         readLine(L1, ["1","2","3","A"])
